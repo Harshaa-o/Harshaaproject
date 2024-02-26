@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Counts</title>
+</head>
+<body>
+    <h1>Subject Counts</h1>
+    <table border="1">
+        <tr>
+            <th>Subject Name</th>
+            <th>Chapter Count</th>
+            <th>Topic Count</th>
+            <th>Subtopic Count</th>
+        </tr>
+        {% for count in counts %}
+        <tr>
+            <td>{{ count.0 }}</td>
+            <td>{{ count.1 }}</td>
+            <td>{{ count.2 }}</td>
+            <td>{{ count.3 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
