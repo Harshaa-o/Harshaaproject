@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List of Subjects</title>
     <style>
-        /* Global Styles */
+       
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -22,7 +22,6 @@ h1 {
 
 
 
-/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -101,16 +100,16 @@ button:hover {
     </div>
 
     <script>
-        // Function to retrieve CSRF token from cookies
+        
         function getCookie(name) {
             var cookieValue = null;
             if (document.cookie && document.cookie !== '') {
                 var cookies = document.cookie.split(';');
                 for (var i = 0; i < cookies.length; i++) {
                     var cookie = cookies[i].trim();
-                    // Check if the cookie name matches the expected format
+                    
                     if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                        // Extract the CSRF token value
+                        
                         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                         break;
                     }
@@ -119,25 +118,24 @@ button:hover {
             return cookieValue;
         }
 
-        // Open the modal
+      
         function openModal() {
             document.getElementById('myModal').style.display = 'block';
         }
 
-        // Close the modal
+        
         function closeModal() {
             document.getElementById('myModal').style.display = 'none';
         }
 
-        // Function to add a new subject
         function addSubject() {
             var name = document.getElementById('subject_name').value;
 
-            // Send AJAX request to the server
+        
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/appsch/add_subject/');
             
-            // Set CSRF token as a custom header
+    
             var csrftoken = getCookie('csrftoken');
             xhr.setRequestHeader('X-CSRFToken', csrftoken);
             
@@ -149,12 +147,12 @@ button:hover {
                         if (response.success) {
                             var subjectId = response.id;
                             alert('Subject added successfully with ID: ' + subjectId);
-                            // Append the new subject to the list
+                            
                             var subjectList = document.getElementById('subjectList');
                             var listItem = document.createElement('li');
                             listItem.textContent = name;
                             subjectList.appendChild(listItem);
-                            // Close the modal after adding the subject
+                           
                             closeModal();
                             document.getElementById('subject_name').value = '';
                         } else {
